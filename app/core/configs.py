@@ -25,7 +25,7 @@ class Settings(BaseSettings):
     POSTGRES_DB: str
     POSTGRES_PASSWORD: str
     POSTGRES_USER: str
-    POSTGRES_HOST: str
+    POSTGRES_HOST: Optional[str] = 'localhost'
 
     refresh_token_url: str = 'api/v1/token/refresh'
     # email_url: str = 'http://?/v1/user/closed/get-by-email'
