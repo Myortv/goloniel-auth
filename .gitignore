@@ -37,7 +37,11 @@ app/utils/checks.py
 private_key.pem
 public_key.pem
 env.sh
+<<<<<<< HEAD
 ./logs
 logs/*
 */logs/*
 logs/logfile*
+/logs
+/logs/**
+*logfile*
