@@ -52,7 +52,7 @@ class Settings(BaseSettings):
 
     RABBITMQ_HOST: Optional[str] = 'localhost'
     RABBITMQ_PORT: Optional[int] = 5672
-    RABBITMQ_USERNAME: Optional[str] = 'guest'
+    RABBITMQ_USER: Optional[str] = 'guest'
     RABBITMQ_PASSWORD: Optional[str] = 'guest'
 
     DISCORD_AUTH_URL: str = 'https://discord.com/api/oauth2/authorize?client_id=1122200855014285432&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fapi%2Fv1%2Fintegrations%2Fdiscord%2Ftoken-callback&response_type=code&scope=identify'

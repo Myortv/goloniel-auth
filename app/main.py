@@ -77,7 +77,7 @@ async def startup():
     await RabbitManager.start(
         settings.RABBITMQ_HOST,
         settings.RABBITMQ_PORT,
-        settings.RABBITMQ_USERNAME,
+        settings.RABBITMQ_USER,
         settings.RABBITMQ_PASSWORD,
     )
     instrumentator.expose(app, include_in_schema=True, should_gzip=True)

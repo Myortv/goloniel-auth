@@ -39,3 +39,5 @@ public_key.pem
 env.sh
 ./logs
 logs/*
+*/logs/*
+logs/logfile*
