@@ -1,6 +1,11 @@
 # Use an official Python runtime as a parent image
 FROM python:3.11-slim
 
+# Install git
+
+RUN apt-get update
+RUN apt-get install -y git
+
 # Set default environment variables for RabbitMQ and PostgreSQL
 ENV RABBITMQ_HOST test.goloneil.org
 ENV RABBITMQ_PORT 5672
@@ -21,7 +26,7 @@ RUN pip install -r req.txt
 COPY . .
 
 # Install fastapi-template
-RUN pip install https://github.com/Myortv/fastapi-plugins.git
+RUN pip install git+https://github.com/Myortv/fastapi-plugins.git
 
 # Expose the port your FastAPI app will run on
 EXPOSE 8000
