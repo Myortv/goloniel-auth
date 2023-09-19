@@ -5,7 +5,7 @@ from datetime import timedelta
 from os.path import dirname, abspath, join
 
 import aiohttp
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import AnyHttpUrl, validator
 
 from cryptography.hazmat.primitives import serialization
@@ -17,6 +17,8 @@ BASE_DIR = dirname(dirname(dirname(abspath(__file__))))
 
 
 class Settings(BaseSettings):
+    model_config = SettingsConfigDict(env_file='env.sh', env_file_encoding='utf-8')
+
     API_V1_STR: str = "/api/v1"
     PROJECT_NAME: str = 'Goloniel Auth'
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = ["http://localhost"]
