@@ -39,7 +39,7 @@ async def get_refresh_token(
     ):
         raise HTTPException(401, 'Bad password')
     refresh_token = token_manager.encode(
-        {'sub': user.id},
+        {'sub': user.id, 'role': user.role},
         settings.refresh_token_expires,
     )
     meta = {

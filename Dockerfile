@@ -6,12 +6,6 @@ FROM python:3.11-slim
 RUN apt-get update
 RUN apt-get install -y git
 
-# Set default environment variables for RabbitMQ and PostgreSQL
-ENV RABBITMQ_HOST test.goloneil.org
-ENV RABBITMQ_PORT 5672
-ENV POSTGRES_HOST test.goloniel.org
-ENV POSTGRES_PORT 5432
-
 # Set the working directory in the container
 WORKDIR /app
 
