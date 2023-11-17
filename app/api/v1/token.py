@@ -52,7 +52,7 @@ async def get_refresh_token(
     ):
         raise HTTPException(507)
     access_token = token_manager.encode(
-        {'sub': user.id},
+        {'sub': user.id, 'role': user.role},
         settings.access_token_expires,
     )
     result = {
@@ -69,10 +69,13 @@ async def get_access_token(refresh_token: SecretToken):
         payload = token_manager.get_content(
             refresh_token.token.get_secret_value()
         )
-        return {'access_token': token_manager.encode(
-            data=payload,
-            expires_delta=settings.access_token_expires,
-        )}
+        print(payload)
+        return {
+            'access_token': token_manager.encode(
+                data=payload,
+                expires_delta=settings.access_token_expires,
+            )
+        }
     except BadJwtException:
         raise HTTPException(status_code=400, detail='Bad Token')
 

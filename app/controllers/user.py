@@ -151,7 +151,6 @@ async def add_email(
     )
     if not result:
         return result
-    print(result)
     user = UserInDBProtected(**result)
     return user
 
