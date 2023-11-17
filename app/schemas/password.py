@@ -7,4 +7,4 @@ class Password(BaseModel):
     password: SecretStr
 
     def hash_password(self):
-        self.password = SecretStr(hash_password(self.password.get_secret_value()))
+        self.password = SecretStr(hash_password(self.password))

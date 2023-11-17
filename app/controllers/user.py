@@ -69,7 +69,15 @@ async def save(
     user_data: UserCreateProtected,
     conn: Connection = None,
 ) -> UserInDBProtected:
-    result = await conn.fetchrow(*insert_q(user_data, 'user_account'))
+    user_data.hash_password()
+    print(user_data.password.get_secret_value())
+    result = await conn.fetchrow(
+        'insert into user_account (username, password)'
+        'values ($1, $2) '
+        'returning *',
+        user_data.username,
+        user_data.password.get_secret_value()
+    )
     if not result:
         return result
     user = UserInDBProtected(**result)

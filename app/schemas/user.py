@@ -40,7 +40,7 @@ class UserCreateProtected(BaseModel):
     password: SecretStr
 
     def hash_password(self):
-        self.password = hash_password(str(self.password))
+        self.password = SecretStr(hash_password(self.password))
 
 
 class UserUpdateProtected(BaseModel):

@@ -69,7 +69,6 @@ async def get_access_token(refresh_token: SecretToken):
         payload = token_manager.get_content(
             refresh_token.token.get_secret_value()
         )
-        print(payload)
         return {
             'access_token': token_manager.encode(
                 data=payload,

@@ -33,7 +33,6 @@ async def get_by_id(
 async def create_user(
     user_data: UserCreateProtected,
 ):
-    user_data.hash_password()
     if user := await user_controller.save(user_data):
         await user_messages.emit_created(user)
         return user
