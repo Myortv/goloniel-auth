@@ -83,7 +83,7 @@ async def update(
     conn: Connection = None,
 ) -> UserInDBProtected:
     result = await conn.fetchrow(
-        *update_q(user_data, 'user_account')
+        *update_q(user_data, 'user_account', id=user_id)
     )
     if not result:
         return result

@@ -26,4 +26,4 @@ RUN pip install git+https://github.com/Myortv/fastapi-plugins.git
 EXPOSE 8000
 
 # Command to start your FastAPI application
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4", "--log-config", "app/core/log.config"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "2", "--log-config", "app/core/log.config"]
