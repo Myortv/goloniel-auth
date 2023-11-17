@@ -70,7 +70,6 @@ async def save(
     conn: Connection = None,
 ) -> UserInDBProtected:
     user_data.hash_password()
-    print(user_data.password.get_secret_value())
     result = await conn.fetchrow(
         'insert into user_account (username, password)'
         'values ($1, $2) '
