@@ -29,6 +29,16 @@ async def get_by_id(
         raise HTTPException(404)
 
 
+@api.get('/all', response_model=UserInDBProtected)
+async def get_by_id(
+    user_id: int
+):
+    if user := await user_controller.get_all(user_id):
+        return user
+    else:
+        raise HTTPException(404)
+
+
 @api.post('/', response_model=UserInDBProtected)
 async def create_user(
     user_data: UserCreateProtected,
