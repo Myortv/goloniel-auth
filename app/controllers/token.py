@@ -194,7 +194,7 @@ async def delete_discord_state(
     conn: Connection = None,
 ) -> DiscordState:
     result = await conn.fetchrow(
-        'delete discord_state where state = $1 returning *',
+        'delete from discord_state where state = $1 returning *',
         state,
     )
     if not result:
