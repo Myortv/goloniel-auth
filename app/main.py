@@ -9,8 +9,8 @@ from prometheus_fastapi_instrumentator import Instrumentator
 
 from app.core.configs import settings, tags_metadata
 
-from plugins.controllers import DatabaseManager
-from plugins.rabbit import RabbitManager
+from fastapiplugins.controllers import DatabaseManager
+from fastapiplugins.rabbit import RabbitManager
 
 
 app = FastAPI(

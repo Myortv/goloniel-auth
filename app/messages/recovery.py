@@ -6,7 +6,7 @@ from aio_pika import Channel, Exchange, ExchangeType
 from app.schemas.user import UserInDBProtected
 from app.schemas.token import RecoveryToken
 
-from plugins.rabbit import RabbitManager
+from fastapiplugins.rabbit import RabbitManager
 
 
 @RabbitManager.acquire_channel('user_events', ExchangeType.DIRECT)

@@ -1,6 +1,6 @@
 from asyncpg import Connection
 
-from plugins.controllers import (
+from fastapiplugins.controllers import (
     DatabaseManager as DM,
     insert_q,
     select_q_detailed,
@@ -37,17 +37,23 @@ async def get_by_id(
 
 @DM.acqure_connection()
 async def get_all(
-    user_id: int,
     conn: Connection = None,
 ) -> UserInDBProtected:
-    result = await conn.fetchrow(*select_q_detailed(
+    print(
+        *select_q_detailed(
+        'user_account',
+        UserInDBProtected,
+        ['discord_id nulls last']
+    )
+    )
+    result = await conn.fetch(*select_q_detailed(
         'user_account',
         UserInDBProtected,
         ['discord_id nulls last']
     ))
     if not result:
         return result
-    return UserInDBProtected(**result)
+    return [UserInDBProtected(**row) for row in result]
 
 
 @DM.acqure_connection()

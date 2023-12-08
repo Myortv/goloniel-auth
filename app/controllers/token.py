@@ -11,7 +11,7 @@ from app.schemas.token import (
     DiscordState,
 )
 
-from plugins.controllers import (
+from fastapiplugins.controllers import (
     DatabaseManager as DM,
 )
 

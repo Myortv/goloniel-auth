@@ -16,7 +16,7 @@ from app.schemas.token import SecretToken
 from app.utils.password import compare_passwords
 from app.utils.deps import identify_request
 
-from plugins.token import BadJwtException
+from fastapiplugins.token import BadJwtException
 
 
 api = APIRouter()

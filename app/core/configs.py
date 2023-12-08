@@ -10,7 +10,7 @@ from pydantic import AnyHttpUrl, validator
 
 from cryptography.hazmat.primitives import serialization
 
-from plugins.token import TokenManager
+from fastapiplugins.token import TokenManager
 
 
 BASE_DIR = dirname(dirname(dirname(abspath(__file__))))
@@ -55,11 +55,11 @@ class Settings(BaseSettings):
     RABBITMQ_USER: Optional[str] = 'guest'
     RABBITMQ_PASSWORD: Optional[str] = 'guest'
 
-    DISCORD_AUTH_URL: str = 'https://discord.com/api/oauth2/authorize?client_id=1122200855014285432&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fapi%2Fv1%2Fintegrations%2Fdiscord%2Ftoken-callback&response_type=code&scope=identify'
+    DISCORD_AUTH_URL: str = 'https://discord.com/api/oauth2/authorize?client_id=1122200855014285432&response_type=code&redirect_uri=http%3A%2F%2Ftest.goloniel.org%2Fauth%2Fapi%2Fv1%2Fintegrations%2Fdiscord%2Ftoken-callback&scope=identify+email'
     DISCORD_CLIENT_ID: str = None
     DISCORD_CLIENT_SECRET: str = None
 
-    DISCORD_CALLBACK_URL: str = 'http://localhost:8000/api/v1/integrations/discord/token-callback'
+    DISCORD_CALLBACK_URL: str = 'http://test.goloniel.org/auth/api/v1/integrations/discord/token-callback'
 
     @property
     def aiohttp_session(self):

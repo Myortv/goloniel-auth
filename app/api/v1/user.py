@@ -1,3 +1,4 @@
+from typing import List
 from fastapi import APIRouter, Depends
 from fastapi import HTTPException
 
@@ -29,11 +30,9 @@ async def get_by_id(
         raise HTTPException(404)
 
 
-@api.get('/all', response_model=UserInDBProtected)
-async def get_by_id(
-    user_id: int
-):
-    if user := await user_controller.get_all(user_id):
+@api.get('/all', response_model=List[UserInDBProtected])
+async def get_by_id():
+    if user := await user_controller.get_all():
         return user
     else:
         raise HTTPException(404)
