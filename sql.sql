@@ -4,7 +4,8 @@ create table user_account (
 	password text not null,
 	discord_id text,
 	role text not null default 'user',
-	emails text[]
+	emails text[],
+	unique(discord_id)
 	-- emails text[],
 	-- is_deleted boolean default false
 );

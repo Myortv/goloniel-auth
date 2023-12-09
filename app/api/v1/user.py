@@ -38,6 +38,18 @@ async def get_by_id():
         raise HTTPException(404)
 
 
+@api.get('/discord-id', response_model=List[UserInDBProtected])
+async def get_by_discord_id(
+    discrod_id: int,
+):
+    if user := await user_controller.get_by_discrod_id(
+        discrod_id
+    ):
+        return user
+    else:
+        raise HTTPException(404)
+
+
 @api.post('/', response_model=UserInDBProtected)
 async def create_user(
     user_data: UserCreateProtected,

@@ -36,16 +36,24 @@ async def get_by_id(
 
 
 @DM.acqure_connection()
+async def get_by_discord_id(
+    discord_id: int,
+    conn: Connection = None,
+) -> UserInDBProtected:
+    result = await conn.fetchrow(*select_q_detailed(
+        'user_account',
+        UserInDBProtected,
+        discord_id=discord_id,
+    ))
+    if not result:
+        return result
+    return UserInDBProtected(**result)
+
+
+@DM.acqure_connection()
 async def get_all(
     conn: Connection = None,
 ) -> UserInDBProtected:
-    print(
-        *select_q_detailed(
-        'user_account',
-        UserInDBProtected,
-        ['discord_id nulls last']
-    )
-    )
     result = await conn.fetch(*select_q_detailed(
         'user_account',
         UserInDBProtected,
