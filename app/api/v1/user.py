@@ -42,7 +42,7 @@ async def get_by_id():
 async def get_by_discord_id(
     discrod_id: int,
 ):
-    if user := await user_controller.get_by_discrod_id(
+    if user := await user_controller.get_by_discord_id(
         discrod_id
     ):
         return user
