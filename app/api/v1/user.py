@@ -38,7 +38,7 @@ async def get_by_id():
         raise HTTPException(404)
 
 
-@api.get('/discord-id', response_model=List[UserInDBProtected])
+@api.get('/discord-id', response_model=UserInDBProtected)
 async def get_by_discord_id(
     discrod_id: int,
 ):
