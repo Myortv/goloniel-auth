@@ -37,7 +37,7 @@ async def get_by_id(
 
 @DM.acqure_connection()
 async def get_by_discord_id(
-    discord_id: int,
+    discord_id: str,
     conn: Connection = None,
 ) -> UserInDBProtected:
     result = await conn.fetchrow(*select_q_detailed(
