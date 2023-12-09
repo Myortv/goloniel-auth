@@ -40,10 +40,10 @@ async def get_by_id():
 
 @api.get('/discord-id', response_model=UserInDBProtected)
 async def get_by_discord_id(
-    discrod_id: int,
+    discord_id: int,
 ):
     if user := await user_controller.get_by_discord_id(
-        str(discrod_id)
+        str(discord_id)
     ):
         return user
     else:
